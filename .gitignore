@@ -1,6 +1,5 @@
 node_modules/
 dist/
-docs/
 .parcel-cache
 *.pdf
 build.sh
