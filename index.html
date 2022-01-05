@@ -16,7 +16,17 @@
     />
     <style>
       .modal {
-        top: 30%;
+        top: 0;
+      }
+
+      form .btn span,
+      form .btn:disabled span.original {
+        display: none;
+      }
+
+      form .btn span.original,
+      form .btn:disabled span.spinner-border {
+        display: inline-block;
       }
 
       .title {
@@ -82,19 +92,23 @@
         <div class="collapse navbar-collapse" id="navbarButtonsExample">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">dashborad</a>
+              <a id="dashborad" style="display: none" class="nav-link" href="#"
+                >dashborad</a
+              >
             </li>
           </ul>
 
           <div class="d-flex align-items-center">
             <button
               type="button"
+              id="loginNavBtn"
               class="btn btn-link px-3 me-2"
               data-mdb-toggle="modal"
               data-mdb-target="#loginModal"
             >
               Login
             </button>
+            <span id="userName"></span>
           </div>
         </div>
       </div>
@@ -112,7 +126,8 @@
             <h2 id="group">1</h2>
             <h2>組</h2>
           </div>
-          <form>
+          <h3 id="beginRating" style="text-align: center">還未開始評分</h3>
+          <form id="ratingContainer" style="display: none">
             <div class="row mb-4">
               <div class="col-3">
                 <div class="col-form-label">產品</div>
@@ -194,19 +209,19 @@
                 <div class="col-form-label">建議</div>
               </div>
               <div class="form-outline col-8">
-                <textarea id="form5Example1" class="form-control" />
+                <textarea id="comment" class="form-control"></textarea>
               </div>
             </div>
             <button
               type="submit"
-              id="test"
+              id="ratingSubmit"
               class="btn btn-primary btn-block mb-4"
             >
               送出
             </button>
           </form>
           <h3 id="testt"></h3>
-          <div>
+          <div style="margin-top: 60px;">
             <h3 style="text-align: center">評分標準</h3>
             <p>產品 25% (相關性、可行性、完整度、創新)</p>
             <p>技術 55% (複雜度、功能)</p>
@@ -217,16 +232,16 @@
       </div>
     </div>
     <div
-      class="modal fade bottom"
+      class="modal fade"
       id="loginModal"
       tabindex="-1"
       aria-labelledby="loginModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-frame modal-bottom">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="loginModalLabel">登入</h5>
+            <h5 class="modal-title" id="loginModalLabel">評審登入</h5>
             <button
               type="button"
               class="btn-close"
@@ -235,25 +250,32 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="login">
               <div class="form-outline mb-4">
-                <input type="text" id="form1Example1" class="form-control" />
-                <label class="form-label" for="form1Example1">學號</label>
+                <input
+                  type="password"
+                  id="passwordInput"
+                  class="form-control"
+                />
+                <label class="form-label" for="passwordInput">憑證</label>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">
-                登入
+              <button
+                id="loginBtn"
+                type="submit"
+                class="btn btn-primary btn-block"
+              >
+                <span class="original"> 登入 </span>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
               </button>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <script type="module" src="./assets/js/mdb.min.js"></script>
-    <script type="module" src="./assets/js/all.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-      referrerpolicy="no-referrer"
-    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       referrerpolicy="no-referrer"
@@ -264,35 +286,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-      $(document).ready(function () {
-        // $("#loginModal").modal("show");
-        $("#test").click((e) => {
-          e.preventDefault();
-          $("input:radio:checked", this)
-            .parent()
-            .parent()
-            .parent()
-            .removeClass("error");
-          var score =
-            $("input[name=rating0]:checked").val() * 5 +
-            $("input[name=rating1]:checked").val() * 11 +
-            $("input[name=rating2]:checked").val() * 3 +
-            $("input[name=rating3]:checked").val() * 1;
-          if (!Number.isNaN(score)) {
-            $("#testt").html(score);
-            // $("input").prop("disabled", true);
-            $("textarea").prop("disabled", true);
-          } else {
-            $("input:radio:not(:checked)", this)
-              .parent()
-              .parent()
-              .parent()
-              .addClass("error");
-            return false;
-          }
-        });
-      });
-    </script>
+    <script type="module" src="./assets/js/mdb.min.js"></script>
+    <script type="module" src="./assets/js/all.min.js"></script>
+    <script type="module" src="./firebase.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

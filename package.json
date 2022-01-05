@@ -5,11 +5,14 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel index.html --open --no-cache",
-    "build": "parcel build"
+    "build": "parcel build --public-url https://jimmyhealer.github.io/easyrating/ --dist-dir docs/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "firebase": "^9.4.1"
   }
 }
