@@ -123,7 +123,6 @@ onAuthStateChanged(auth, (user) => {
     $(".star").hide();
     $(".number").show();
     $("#dashborad").show();
-    $("#ratingContainer").show();
     $("#beginRating").hide();
   } else {
     $(".number").hide();
