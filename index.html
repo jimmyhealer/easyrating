@@ -7,6 +7,7 @@
     <title>讀書會成果發表 | 評分平台</title>
     <link rel="stylesheet" href="./assets/css/all.min.css" />
     <link rel="stylesheet" href="./assets/css/mdb.min.css" />
+    <link rel="stylesheet" href="./assets/css/loading.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -17,6 +18,10 @@
     <style>
       .modal {
         top: 0;
+      }
+
+      .form-control.error {
+        border-color: #dc3545;
       }
 
       form .btn span,
@@ -122,85 +127,229 @@
       <div class="row mt-3">
         <div class="col-md-6 offset-md-3">
           <div class="title">
-            <h2>目前組別 第</h2>
-            <h2 id="group">1</h2>
-            <h2>組</h2>
+            <h2 id="group">目前組別 第1組</h2>
           </div>
           <h3 id="beginRating" style="text-align: center">還未開始評分</h3>
           <form id="ratingContainer" style="display: none">
-            <div class="row mb-4">
-              <div class="col-3">
-                <div class="col-form-label">產品</div>
+            <div class="star" style="display: none">
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">產品</div>
+                </div>
+                <div class="form-outline col-8">
+                  <div class="rating">
+                    <input
+                      type="radio"
+                      value="5"
+                      name="rating0"
+                      id="rating0-1"
+                    />
+                    <label for="rating0-1"></label>
+                    <input
+                      type="radio"
+                      value="4"
+                      name="rating0"
+                      id="rating0-2"
+                    />
+                    <label for="rating0-2"></label>
+                    <input
+                      type="radio"
+                      value="3"
+                      name="rating0"
+                      id="rating0-3"
+                    />
+                    <label for="rating0-3"></label>
+                    <input
+                      type="radio"
+                      value="2"
+                      name="rating0"
+                      id="rating0-4"
+                    />
+                    <label for="rating0-4"></label>
+                    <input
+                      type="radio"
+                      value="1"
+                      name="rating0"
+                      id="rating0-5"
+                    />
+                    <label for="rating0-5"></label>
+                  </div>
+                </div>
               </div>
-              <div class="form-outline col-8">
-                <div class="rating">
-                  <input type="radio" value="5" name="rating0" id="rating0-1" />
-                  <label for="rating0-1"></label>
-                  <input type="radio" value="4" name="rating0" id="rating0-2" />
-                  <label for="rating0-2"></label>
-                  <input type="radio" value="3" name="rating0" id="rating0-3" />
-                  <label for="rating0-3"></label>
-                  <input type="radio" value="2" name="rating0" id="rating0-4" />
-                  <label for="rating0-4"></label>
-                  <input type="radio" value="1" name="rating0" id="rating0-5" />
-                  <label for="rating0-5"></label>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">技術</div>
+                </div>
+                <div class="form-outline col-8">
+                  <div class="rating">
+                    <input
+                      type="radio"
+                      value="5"
+                      name="rating1"
+                      id="rating1-1"
+                    />
+                    <label for="rating1-1"></label>
+                    <input
+                      type="radio"
+                      value="4"
+                      name="rating1"
+                      id="rating1-2"
+                    />
+                    <label for="rating1-2"></label>
+                    <input
+                      type="radio"
+                      value="3"
+                      name="rating1"
+                      id="rating1-3"
+                    />
+                    <label for="rating1-3"></label>
+                    <input
+                      type="radio"
+                      value="2"
+                      name="rating1"
+                      id="rating1-4"
+                    />
+                    <label for="rating1-4"></label>
+                    <input
+                      type="radio"
+                      value="1"
+                      name="rating1"
+                      id="rating1-5"
+                    />
+                    <label for="rating1-5"></label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">設計</div>
+                </div>
+                <div class="form-outline col-8">
+                  <div class="rating">
+                    <input
+                      type="radio"
+                      value="5"
+                      name="rating2"
+                      id="rating2-1"
+                    />
+                    <label for="rating2-1"></label>
+                    <input
+                      type="radio"
+                      value="4"
+                      name="rating2"
+                      id="rating2-2"
+                    />
+                    <label for="rating2-2"></label>
+                    <input
+                      type="radio"
+                      value="3"
+                      name="rating2"
+                      id="rating2-3"
+                    />
+                    <label for="rating2-3"></label>
+                    <input
+                      type="radio"
+                      value="2"
+                      name="rating2"
+                      id="rating2-4"
+                    />
+                    <label for="rating2-4"></label>
+                    <input
+                      type="radio"
+                      value="1"
+                      name="rating2"
+                      id="rating2-5"
+                    />
+                    <label for="rating2-5"></label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">展現</div>
+                </div>
+                <div class="form-outline col-8">
+                  <div class="rating">
+                    <input
+                      type="radio"
+                      value="5"
+                      name="rating3"
+                      id="rating3-1"
+                    />
+                    <label for="rating3-1"></label>
+                    <input
+                      type="radio"
+                      value="4"
+                      name="rating3"
+                      id="rating3-2"
+                    />
+                    <label for="rating3-2"></label>
+                    <input
+                      type="radio"
+                      value="3"
+                      name="rating3"
+                      id="rating3-3"
+                    />
+                    <label for="rating3-3"></label>
+                    <input
+                      type="radio"
+                      value="2"
+                      name="rating3"
+                      id="rating3-4"
+                    />
+                    <label for="rating3-4"></label>
+                    <input
+                      type="radio"
+                      value="1"
+                      name="rating3"
+                      id="rating3-5"
+                    />
+                    <label for="rating3-5"></label>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row mb-4">
-              <div class="col-3">
-                <div class="col-form-label">技術</div>
-              </div>
-              <div class="form-outline col-8">
-                <div class="rating">
-                  <input type="radio" value="5" name="rating1" id="rating1-1" />
-                  <label for="rating1-1"></label>
-                  <input type="radio" value="4" name="rating1" id="rating1-2" />
-                  <label for="rating1-2"></label>
-                  <input type="radio" value="3" name="rating1" id="rating1-3" />
-                  <label for="rating1-3"></label>
-                  <input type="radio" value="2" name="rating1" id="rating1-4" />
-                  <label for="rating1-4"></label>
-                  <input type="radio" value="1" name="rating1" id="rating1-5" />
-                  <label for="rating1-5"></label>
+            <div class="number">
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">產品(25%)</div>
+                </div>
+                <div class="form-outline col-8">
+                  <input
+                    type="number"
+                    id="typeNumber0"
+                    min="0"
+                    max="25"
+                    class="form-control"
+                  />
+                  <div class="invalid-feedback">不要超過 25 分</div>
                 </div>
               </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-3">
-                <div class="col-form-label">設計</div>
-              </div>
-              <div class="form-outline col-8">
-                <div class="rating d">
-                  <input type="radio" value="5" name="rating2" id="rating2-1" />
-                  <label for="rating2-1"></label>
-                  <input type="radio" value="4" name="rating2" id="rating2-2" />
-                  <label for="rating2-2"></label>
-                  <input type="radio" value="3" name="rating2" id="rating2-3" />
-                  <label for="rating2-3"></label>
-                  <input type="radio" value="2" name="rating2" id="rating2-4" />
-                  <label for="rating2-4"></label>
-                  <input type="radio" value="1" name="rating2" id="rating2-5" />
-                  <label for="rating2-5"></label>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">技術(55%)</div>
+                </div>
+                <div class="form-outline col-8">
+                  <input type="number" id="typeNumber1" class="form-control" />
+                  <div class="invalid-feedback">不要超過 55 分</div>
                 </div>
               </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-3">
-                <div class="col-form-label">展現</div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">設計(15%)</div>
+                </div>
+                <div class="form-outline col-8">
+                  <input type="number" id="typeNumber2" class="form-control" />
+                  <div class="invalid-feedback">不要超過 15 分</div>
+                </div>
               </div>
-              <div class="form-outline col-8">
-                <div class="rating">
-                  <input type="radio" value="5" name="rating3" id="rating3-1" />
-                  <label for="rating3-1"></label>
-                  <input type="radio" value="4" name="rating3" id="rating3-2" />
-                  <label for="rating3-2"></label>
-                  <input type="radio" value="3" name="rating3" id="rating3-3" />
-                  <label for="rating3-3"></label>
-                  <input type="radio" value="2" name="rating3" id="rating3-4" />
-                  <label for="rating3-4"></label>
-                  <input type="radio" value="1" name="rating3" id="rating3-5" />
-                  <label for="rating3-5"></label>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="col-form-label">展現(5%)</div>
+                </div>
+                <div class="form-outline col-8">
+                  <input type="number" id="typeNumber3" class="form-control" />
+                  <div class="invalid-feedback">不要超過 5 分</div>
                 </div>
               </div>
             </div>
@@ -220,8 +369,8 @@
               送出
             </button>
           </form>
-          <h3 id="testt"></h3>
-          <div style="margin-top: 60px;">
+          <h3 id="msg" style="color: #dc3545; text-align: center"></h3>
+          <div style="margin-top: 60px">
             <h3 style="text-align: center">評分標準</h3>
             <p>產品 25% (相關性、可行性、完整度、創新)</p>
             <p>技術 55% (複雜度、功能)</p>
@@ -256,8 +405,10 @@
                   type="password"
                   id="passwordInput"
                   class="form-control"
+                  required
                 />
                 <label class="form-label" for="passwordInput">憑證</label>
+                <div class="invalid-feedback">憑證錯誤</div>
               </div>
               <button
                 id="loginBtn"
@@ -276,6 +427,28 @@
         </div>
       </div>
     </div>
+    <footer class="bg-light text-center text-lg-start">
+      <p id="uuid" style="text-align: center"></p>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://programing.tw/about" target="_blank">
+          Fuyajo Author: Jimmyhealer</a
+        >
+      </div>
+    </footer>
+    <div
+      class="loading-overlay loading-theme-light loading-shown"
+      style="
+        position: fixed;
+        z-index: 2;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      "
+    >
+      <div class="loading-overlay-content">Loading...</div>
+    </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       referrerpolicy="no-referrer"
@@ -286,9 +459,22 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+      integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easy-loading/1.3.0/jquery.loading.min.js"
+      integrity="sha512-tKLMM/v1nsieFOgUyeMSC2jdB4UtbU7R88e+S0pVIz3f6sWdpOpirG2j5pulmH45l1vk47J84V4ifXAYv+wuMw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./firebase.js"></script>
+    <script type="module" src="./assets/js/bootstrap.esm.min.js"></script>
     <script type="module" src="./assets/js/mdb.min.js"></script>
     <script type="module" src="./assets/js/all.min.js"></script>
-    <script type="module" src="./firebase.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

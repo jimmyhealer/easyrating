@@ -13,6 +13,9 @@
     "parcel": "^2.0.1"
   },
   "dependencies": {
-    "firebase": "^9.4.1"
+    "@popperjs/core": "^2.11.2",
+    "firebase": "^9.4.1",
+    "jquery-easy-loading": "^2.0.0-rc.2",
+    "jquery-loading": "^0.2.8"
   }
 }
