@@ -75,10 +75,10 @@ function init(doc) {
     msg = doc.data().msg;
   nowGroupId = doc.data().group;
   if (msg !== "") $("#group").html(msg);
-  else if (id > 0) $("#group").html(`目前組別 第${nowGroupId}組`);
+  else if (nowGroupId > 0) $("#group").html(`目前組別 第${nowGroupId}組`);
   else if (id < 0) $("#group").html(`休息中`);
   else if (id == 0) $("#group").html(`晚上 6 點 40 準時開始`);
-  if (doc.data().group === doc.data().end) {
+  if (nowGroupId && doc.data().group === doc.data().end) {
     $("#beginRating").hide();
     $("#ratingContainer").show();
     let tmp = $.cookie(`group${id}`);

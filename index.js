@@ -194,7 +194,7 @@ $(".dashboard_group_calc").on('click', function() {
 })
 
 $("#dashboard_reset").on('click', function(){
-  updateGroup(1, "group");
+  updateGroup(0, "group");
   updateGroup(0, "end");
   updateGroup("", "msg");
 })
