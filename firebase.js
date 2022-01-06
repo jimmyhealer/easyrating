@@ -59,9 +59,9 @@ async function calcScores(group_id) {
     score[i] /= size;
   }
   $(`#dashboard_group_${group_id}`).html(
-    `老師評分: ${score[0].toFixed(2)}, 我們: ${score[1].toFixed(
+    `老師評分: ${score[1].toFixed(2)}, 我們: ${score[0].toFixed(
       2
-    )}, 其他: ${score[2].toFixed(2)}, 共 ${score[0] * 0.6 + score[1] * 0.1 + score[2] * 0.3} 分`
+    )}, 其他: ${score[2].toFixed(2)}, 共 ${score[0] * 0.1 + score[1] * 0.6 + score[2] * 0.3} 分`
   );
 }
 
