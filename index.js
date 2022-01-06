@@ -1,10 +1,41 @@
-import { uploadScore, login, nowGroupId, auth } from "./firebase.js";
+import { uploadScore, login, nowGroupId, auth, updateGroup, calcScores } from "./firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
-import { Modal } from "./assets/js/bootstrap.esm.min.js";
+import { router, route } from "jqueryrouter";
 
 export var loginState = 0;
 var isTeacher = 0;
+var currentPage = 0;
 const UUID = _uuid();
+
+route((e) => {
+  switch(e.route){
+    case "/":
+      currentPage = 0;
+      $("#indexPage").show();
+      $("#dashboard").hide();
+      break;
+    case "/dashboard":
+      if(loginState === 1){
+        currentPage = 1;
+        $("#indexPage").hide();
+        $("#dashboard").show();
+      }
+      else if(loginState === 0){
+        router.set("/");
+      }
+      break;
+  }
+})
+
+router.init();
+
+$("#dashboradBtn").on('click', ()=>{
+  router.set("/dashboard");
+})
+
+$("#indexPageBtn").on("click", () => {
+  router.set("/");
+});
 
 function _uuid() {
   var d = Date.now();
@@ -77,6 +108,7 @@ const a = $("#ratingSubmit").click((e) => {
       $("#ratingSubmit").prop("disabled", true);
     }
   } else {
+    $("#msg").html("");
     $("input:radio:not(:checked)", this)
       .parent()
       .parent()
@@ -122,14 +154,14 @@ onAuthStateChanged(auth, (user) => {
     else $("#userName").html("馬尚彬 教授");
     $(".star").hide();
     $(".number").show();
-    $("#dashborad").show();
+    $("#dashboradBtn").show();
     $("#beginRating").hide();
   } else {
     $(".number").hide();
     $(".star").show();
     $("#loginNavBtn").show();
     $("#userName").html("");
-    $("#dashborad").hide();
+    $("#dashboradBtn").hide();
     loginState = 0;
   }
 });
@@ -139,3 +171,34 @@ if ($.cookie("UUID") === undefined) {
 }
 
 $("#uuid").html(`You UUID is ${$.cookie("UUID")}`);
+
+
+// dashboard
+
+$(".dashboard_group_start").on('click', function(){ 
+  var $this = $(this), groupid = parseInt($this.attr("data-groupid"));
+  console.log(groupid);
+  updateGroup(groupid, "group");
+  updateGroup("", "msg");
+})
+
+$(".dashboard_group_rating").on('click', function(){ 
+  var $this = $(this), groupid = parseInt($this.attr("data-groupid"));
+  updateGroup(groupid, "end");
+  updateGroup("", "msg");
+})
+
+$(".dashboard_group_calc").on('click', function() {
+  var $this = $(this), groupid = parseInt($this.attr("data-groupid"));
+  calcScores(groupid);
+})
+
+$("#dashboard_reset").on('click', function(){
+  updateGroup(1, "group");
+  updateGroup(0, "end");
+  updateGroup("", "msg");
+})
+
+$("#dashboard_msg_btn").on('click', function(){
+  updateGroup($("#dashboard_msg").val(), "msg");
+})

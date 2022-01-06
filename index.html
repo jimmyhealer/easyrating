@@ -81,7 +81,14 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand">讀書會成果發表</a>
+        <a
+          id="indexPageBtn"
+          class="navbar-brand"
+          role="button"
+          data-route="/"
+          data-target="#indexPage"
+          >讀書會成果發表</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -97,7 +104,13 @@
         <div class="collapse navbar-collapse" id="navbarButtonsExample">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a id="dashborad" style="display: none" class="nav-link" href="#"
+              <a
+                id="dashboradBtn"
+                role="button"
+                style="display: none"
+                class="nav-link"
+                data-route="/dashboard"
+                data-target="#dashboard"
                 >dashborad</a
               >
             </li>
@@ -118,7 +131,117 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-3">
+    <div id="dashboard" class="container mt-3" style="display: none">
+      <div class="d-flex mb-3">
+        <a id="dashboard_reset" class="btn mx-3">reset</a>
+        <div class="form-outline mx-3">
+          <input type="text" id="dashboard_msg" class="form-control"  style="width: 400px;" />
+          <label class="form-label" for="dashboard_msg">message</label>
+        </div>
+        <a id="dashboard_msg_btn" class="btn">submit</a>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">第一組</h5>
+          <p class="card-text" id="dashboard_group_1"></p>
+          <a
+            class="dashboard_group_start card-link"
+            data-groupid="1"
+            role="button"
+            >開始報告</a
+          >
+          <a
+            class="dashboard_group_rating card-link"
+            data-groupid="1"
+            role="button"
+            >開始評分</a
+          >
+          <a
+            class="dashboard_group_calc card-link"
+            data-groupid="1"
+            role="button"
+            >計分</a
+          >
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">第二組</h5>
+          <p class="card-text" id="dashboard_group_2"></p>
+          <a
+            class="dashboard_group_start card-link"
+            data-groupid="2"
+            class="card-link"
+            role="button"
+            >開始報告</a
+          >
+          <a
+            class="dashboard_group_rating card-link"
+            data-groupid="2"
+            role="button"
+            >開始評分</a
+          >
+          <a
+            class="dashboard_group_calc card-link"
+            data-groupid="2"
+            role="button"
+            >計分</a
+          >
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">第三組</h5>
+          <p class="card-text" id="dashboard_group_3"></p>
+          <a
+            class="dashboard_group_start card-link"
+            data-groupid="3"
+            class="card-link"
+            role="button"
+            >開始報告</a
+          >
+          <a
+            class="dashboard_group_rating card-link"
+            data-groupid="3"
+            role="button"
+            >開始評分</a
+          >
+          <a
+            class="dashboard_group_calc card-link"
+            data-groupid="3"
+            role="button"
+            >計分</a
+          >
+        </div>
+      </div>
+      
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">第四組</h5>
+          <p class="card-text" id="dashboard_group_4"></p>
+          <a
+            class="dashboard_group_start card-link"
+            data-groupid="4"
+            class="card-link"
+            role="button"
+            >開始報告</a
+          >
+          <a
+            class="dashboard_group_rating card-link"
+            data-groupid="4"
+            role="button"
+            >開始評分</a
+          >
+          <a
+            class="dashboard_group_calc card-link"
+            data-groupid="4"
+            role="button"
+            >計分</a
+          >
+        </div>
+      </div>
+    </div>
+    <div id="indexPage" class="container mt-3">
       <div class="row">
         <div class="col-md-12">
           <h1>讀書會成果發表 | 評分平台</h1>
@@ -471,6 +594,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jqueryrouter@2.2.11/dist/js/jquery.router.min.js"></script> -->
     <script type="module" src="./firebase.js"></script>
     <script type="module" src="./assets/js/bootstrap.esm.min.js"></script>
     <script type="module" src="./assets/js/mdb.min.js"></script>
