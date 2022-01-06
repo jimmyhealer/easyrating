@@ -9,12 +9,12 @@ const UUID = _uuid();
 
 route((e) => {
   switch(e.route){
-    case "/":
+    case "/easyrating/":
       currentPage = 0;
       $("#indexPage").show();
       $("#dashboard").hide();
       break;
-    case "/dashboard":
+    case "/easyrating/dashboard":
       if(loginState === 1){
         currentPage = 1;
         $("#indexPage").hide();
@@ -30,11 +30,11 @@ route((e) => {
 router.init();
 
 $("#dashboradBtn").on('click', ()=>{
-  router.set("/dashboard");
+  router.set("/easyrating/dashboard");
 })
 
 $("#indexPageBtn").on("click", () => {
-  router.set("/");
+  router.set("/easyrating/");
 });
 
 function _uuid() {
